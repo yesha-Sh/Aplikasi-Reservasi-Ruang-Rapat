@@ -96,7 +96,7 @@
                     <i class="fas fa-calendar-alt text-white text-lg"></i>
                 </div>
                 <div class="font-bold text-xl tracking-tight">
-                    Reservasi<span class="text-primary">Ruang Rapat</span>
+                    Reservasi<span class="text-primary"> Ruang Meeting</span>
                 </div>
             </div>
             <div class="flex items-center space-x-6">

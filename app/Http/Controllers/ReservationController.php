@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ReservationController extends Controller
 {
@@ -52,13 +53,41 @@ class ReservationController extends Controller
         return view('user.reservations.index', compact('reservations'));
     }
 
-    public function cancel(Reservation $reservation) {
+    public function showCancelForm(Reservation $reservation) {
         // Pastikan milik user sendiri
         if ($reservation->user_id !== Auth::id()) {
             abort(403);
         }
 
+        if ($reservation->status !== 'active') {
+            return back()->with('error', 'Reservasi sudah tidak aktif.');
+        }
+
+        return view('user.reservations.confirm-cancel', compact('reservation'));
+    }
+
+    public function cancel(Request $request, Reservation $reservation) {
+        // Pastikan milik user sendiri
+        if ($reservation->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if ($reservation->status !== 'active') {
+            return back()->with('error', 'Reservasi sudah tidak aktif.');
+        }
+
+        $request->validate([
+            'password' => 'required|string'
+        ]);
+
+        // Verifikasi password user
+        if (!Hash::check($request->password, Auth::user()->password)) {
+            return back()->with('error', 'Password salah! Silakan coba lagi.');
+        }
+
         $reservation->update(['status' => 'cancelled']);
-        return back()->with('success', 'Reservasi dibatalkan.');
+        
+        return redirect()->route('reservations.history')
+            ->with('success', 'Reservasi berhasil dibatalkan.');
     }
 }

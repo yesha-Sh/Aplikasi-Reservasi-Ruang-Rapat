@@ -67,13 +67,10 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @if($res->status === 'active')
-                                <form action="{{ route('reservations.cancel', $res->id) }}" method="POST" onsubmit="return confirm('Yakin ingin membatalkan reservasi ini?');">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="text-red-600 hover:text-red-800 font-semibold transition-colors duration-200 flex items-center justify-end w-full">
-                                        <i class="fas fa-ban mr-1"></i> Batalkan
-                                    </button>
-                                </form>
+                                <a href="{{ route('reservations.cancel.form', $res->id) }}" 
+                                   class="text-red-600 hover:text-red-800 font-semibold transition-colors duration-200 flex items-center justify-end w-full">
+                                    <i class="fas fa-ban mr-1"></i> Batalkan
+                                </a>
                             @else
                                 <span class="text-gray-400 italic text-sm">-</span>
                             @endif

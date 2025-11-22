@@ -82,16 +82,13 @@
                     </td>
                     <td class="px-6 py-4 text-right">
                         @if($res->status === 'active')
-                            <form action="{{ route('admin.reservations.cancel', $res->id) }}" method="POST" onsubmit="return confirm('Paksa batalkan reservasi ini?');">
-                                @csrf
-                                @method('PATCH')
-                                <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all duration-300 red-glow">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                    FORCE CANCEL
-                                </button>
-                            </form>
+                            <a href="{{ route('admin.reservations.cancel.form', $res->id) }}" 
+                               class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all duration-300 red-glow">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                                FORCE CANCEL
+                            </a>
                         @else
                             <span class="text-gray-400 text-sm">-</span>
                         @endif

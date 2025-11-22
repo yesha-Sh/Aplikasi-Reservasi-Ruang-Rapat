@@ -118,7 +118,7 @@
                             </svg>
                         </div>
                         <div class="text-2xl sm:text-3xl font-bold text-gray-900">
-                            Meet<span class="text-red-600">Tech</span>
+                            RR<span class="text-red-600">M</span>
                         </div>
                     </div>
                 </div>
@@ -167,15 +167,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" name="remember" class="w-4 h-4 text-red-600 rounded focus:ring-red-500 border-gray-300">
-                            <span class="text-sm text-gray-600">Ingat saya</span>
-                        </label>
-                        <a href="#" class="text-sm text-red-600 hover:text-red-700 font-medium transition-colors">
-                            Lupa password?
-                        </a>
-                    </div>
+                  
                     
                     <button 
                         type="submit" 

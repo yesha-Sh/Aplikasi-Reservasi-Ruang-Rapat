@@ -6,6 +6,12 @@ readme berisi :
 - Alur Logika Mencegah Konflik Jadwal 
 - Dokumentasi cara prompt
 
+# User admin
+admin@office.com
+pw: password
+user@office.com
+pw: password
+
 ## Fitur Utama
 
 - Pendaftaran & login pengguna (authentication).
@@ -38,23 +44,22 @@ readme berisi :
    ```bash
    php artisan migrate
    php artisan db:seed
+
+   //atau
+
+   php artisan migrate:fresh --seed
    ```
 
-   - Seeder akan menjalankan `AdminSeeder` (lihat `database/seeders`) untuk membuat akun admin awal.
+   - Seeder akan menjalankan `DatabaseSeeder` (lihat `database/seeders`) untuk membuat akun admin awal.
 
-5. Build assets (development):
-
-   ```bash
-   npm run dev
-   ```
-
-6. Jalankan server lokal:
+3. Jalankan server lokal:
 
    ```bash
    php artisan serve
    ```
 
    - Atau gunakan Laragon / environment lokal lain .
+   
 ========================================
   DATABASE SCHEMA – MEETING RESERVATION
 ========================================
@@ -372,7 +377,7 @@ Text Gray: #5F6368
 Prompt ini digunakan untuk menghasilkan template awal dari backend
 
 ```
-Buatkan seluruh controller backend Laravel untuk sistem Reservasi Ruang Rapat dengan fitur:
+Buatkan seluruh controller dan modalsbackend Laravel untuk sistem Reservasi Ruang Rapat dengan fitur:
 User: lihat ruang, lihat detail ruang, buat reservasi, batalkan reservasi sendiri, lihat riwayat.
 Admin: CRUD ruang, kelola reservasi (lihat & batalkan siapa pun), kelola user (ubah role).
 Validasi: jam kerja 08:00–17:00, tidak tumpang tindih (overlap), start < end, tidak masa lalu.
@@ -386,7 +391,7 @@ Validasi: jam kerja 08:00–17:00, tidak tumpang tindih (overlap), start < end, 
 * Alur logika deteksi konflik jadwal ( Penjelasan validasi jam kerja dan pembatalan reservasi)
 * Struktur folder
 * Template frontend dasar (Blade + TailwindCSS)
-* Template Controller
+* Template Controller dan modals
 
 ---
 

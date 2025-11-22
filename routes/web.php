@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rooms/{room}', [DashboardController::class, 'showRoom'])->name('rooms.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/my-reservations', [ReservationController::class, 'history'])->name('reservations.history');
+    
+    // Cancel dengan verifikasi password
+    Route::get('/reservations/{reservation}/cancel', [ReservationController::class, 'showCancelForm'])->name('reservations.cancel.form');
     Route::patch('/reservations/{reservation}/cancel', [ReservationController::class, 'cancel'])->name('reservations.cancel');
 });
 
@@ -43,5 +46,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     
     // Manajemen Semua Reservasi
     Route::get('/reservations', [AdminReservation::class, 'index'])->name('reservations.index');
+    
+    // Admin cancel dengan verifikasi password
+    Route::get('/reservations/{reservation}/cancel', [AdminReservation::class, 'showCancelForm'])->name('reservations.cancel.form');
     Route::patch('/reservations/{reservation}/cancel', [AdminReservation::class, 'cancel'])->name('reservations.cancel');
 });
